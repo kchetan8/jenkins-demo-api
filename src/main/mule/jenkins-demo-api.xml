@@ -17,7 +17,8 @@ output application/json
 ---
 {
 	status: 200,
-	id: correlationId
+	id: correlationId,
+	message: "All systems are okay"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
