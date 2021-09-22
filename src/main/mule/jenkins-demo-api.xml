@@ -9,9 +9,10 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<global-property doc:name="Global Property" doc:id="2f05ce87-b674-494c-9721-a655b18bb31e" name="http.port" value="8081" />
+	<global-property doc:name="Global Property" doc:id="8559566a-cdcf-4dde-aea4-edce769f42c7" name="mule.env" value="dev" />
+	<configuration-properties doc:name="Configuration properties" doc:id="2aaeef47-8cc0-4b8b-84f2-f97f8c3e12de" file="properties\jenkins-demo-api-${mule.env}.properties" />
 	<flow name="jenkins-demo-apiFlow" doc:id="28291db8-9744-4f7a-b5b7-59ae1f44a1ef" >
 		<http:listener doc:name="Listener" doc:id="d52a23bc-3a25-497d-af6c-2ccbacac505a" config-ref="HTTP_Listener_config" path="/status"/>
-		<logger level="${logging.level}" doc:name="Logger" doc:id="0c6f7207-8108-4b7b-9ccc-e763ae3e5304" />
 		<ee:transform doc:name="Transform Message" doc:id="13e0a4a3-c549-40fc-8c10-abaa22a6776e" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -20,7 +21,7 @@ output application/json
 {
 	status: 200,
 	id: correlationId,
-	message: "All systems are okay"
+	message: "${message}"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
