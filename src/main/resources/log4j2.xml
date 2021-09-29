@@ -42,7 +42,7 @@
 			level="INFO" />
 
 		<AsyncRoot level="INFO">
-			<AppenderRef ref="file" />
+			<AppenderRef ref="ELK" />
 		</AsyncRoot>
 	</Loggers>
 
